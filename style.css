@@ -1,0 +1,265 @@
+
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 90%; /* Utiliza porcentaje en lugar de píxeles */
+  margin: 0 auto;
+  padding: 1em; /* Utiliza em en lugar de píxeles */
+}
+
+.main-container {
+  background-color:#ffffff;
+  padding-top: -1em;
+  padding-bottom: -14em;
+  padding-left: 4em;
+  padding-right: 12em;
+  margin: 1em; /* Eliminado para evitar márgenes laterales en dispositivos pequeños */
+  margin-top: 2em;
+  margin-bottom: -1em;
+  margin-left: 2em;
+  margin-inline-start: 2em;
+  color: black;
+  font-size: 1.3em;
+  text-align: center;
+  justify-content:space-between;
+  display: flex;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+  font-weight: bold;
+}
+
+.sub-container {
+  background-color: #ffffff;
+  padding: 2em; /* Utiliza em en lugar de píxeles */
+  margin: 1em 0; /* Utiliza em en lugar de píxeles */
+}
+
+.sub-container h1 {
+  color: #fdfdf7;
+  font-size: 1.2em;
+  margin: 0; /* Eliminado para evitar márgenes predeterminados */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+}
+.h1 {
+  color: #ffffff;
+  font-size: 1.2em;
+  margin: 0; /* Eliminado para evitar márgenes predeterminados */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+}
+
+.sub-container h2 {
+  color: #333333;
+  font-size: 1.0em;
+  margin: 5em; /* Eliminado para evitar márgenes predeterminados */
+  font-weight: bold;
+}
+
+.sub-container p {
+  color: #666666;
+}
+
+.column-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 1em; /* Utiliza em en lugar de píxeles */
+  text-align: center;
+  border: 1px solid #dddddd;
+}
+
+.small-paragraph-container {
+  background-color: #f4f4f4;
+  padding: 2em; /* Utiliza em en lugar de píxeles */
+}
+h2 {
+    display: flex;
+    font-size: 1.4em;
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+    margin-inline-start: 25px;
+    margin-inline-end: 0px;
+    padding-left: 3em;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.tajawal-extralight {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.tajawal-light {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.tajawal-regular {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tajawal-medium {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.tajawal-bold {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.tajawal-extrabold {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.tajawal-black {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  video {
+    width: auto;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  video {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+  }
+
+  .main-container,
+  .sub-container,
+  .column {
+    margin: 0; /* Elimina márgenes laterales en dispositivos pequeños */
+  }
+}
+
+.sub-container h4 {
+  background-color: #9e22d8;
+  padding: 2em; /* Utiliza em en lugar de píxeles */
+  margin: 0; /* Elimina márgenes predeterminados */
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.image-container {
+  background-color: #fffdfd;
+  text-align-last: left; 
+  padding: 1em;
+  width: 100%;
+  border-radius: 8px; 
+  height:auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container video {
+  max-width: 100%;
+  height: auto;
+  display: grid; /* Asegura que el video se centre correctamente */
+  grid-template-columns: 
+      repeat(auto-fit, minmax(150px, 1fr)
+      );
+      gap:32px;
+  margin: 0 auto; /* Centra el video horizontalmente */
+  object-fit: cover; /* Añadido para ajustar el video en el contenedor sin distorsionarse */
+}
+.imagen-chica {
+  width: 100%; /* La imagen tomará todo el ancho disponible */
+  height: auto; /* Mantiene la relación de aspecto */
+  display: block; /* Elimina el espacio debajo de la imagen */
+  max-width: 100%; /* Asegura que la imagen no exceda el 100% del contenedor */
+}
+@media (max-width: 600px) {
+  .imagen-chica {
+    width: 100%; /* En pantallas pequeñas, la imagen ocupará todo el ancho */
+  }
+}
+
+@media (max-width: 600px) {
+  /* Ajustar márgenes y tamaños de fuentes en pantallas pequeñas */
+  .main-container {
+    padding: 1em; /* Reducir el padding en pantallas pequeñas */
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em; /* Ajustar el tamaño de fuente */
+  }
+
+  .column {
+    flex: 100%; /* En pantallas pequeñas, las columnas se apilan */
+  }
+
+  .sub-container {
+    padding: 1em; /* Reducir el padding en pantallas pequeñas */
+  }
+}
+/* Contenedor principal para centrar los gráficos */
+.chart-container {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;     /* Centra el contenido verticalmente */
+  margin: 20px 0;          /* Agrega espacio arriba y abajo */
+}
+
+/* Ajusta el tamaño de los gráficos */
+canvas {
+  width: 70% !important;  /* Establece el 70% del ancho del contenedor */
+  height: 350px !important; /* Establece la altura del gráfico */
+}
+
+/* Si deseas también centrar todo el contenido de la página, puedes aplicar esto */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Tajawal', sans-serif;
+  padding: 20px;
+}
