@@ -24,19 +24,6 @@ const dataLine2 = {
   }]
 };
 
-// Configuración del gráfico de líneas
-const configLine = {
-  type: 'line',
-  data: dataLine1, // Puede cambiar esto a dataLine2 para mostrar el gráfico de la segunda sección
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-};
-
 // Seleccione los contextos de los <canvas> y cree los gráficos
 const myChartLine1 = new Chart(document.getElementById('myChart-line-1'), {
   type: 'line',
