@@ -5,8 +5,8 @@
 const dataLine1 = {
   labels: ['Día 1', 'Día 2'], // Etiquetas de los días
   datasets: [{
-    label: 'Km recorridos en Semana 29',
-    data: [20, 22], // Datos de los km recorridos en cada día
+    label: 'Km recorridos en Semana 31',
+    data: [19, 22], // Datos de los km recorridos en cada día
     borderColor: 'rgba(75, 192, 192, 1)',
     fill: true,
     tension: 0.1
@@ -16,12 +16,25 @@ const dataLine1 = {
 const dataLine2 = {
   labels: ['Día 1', 'Día 2'], // Etiquetas de los días
   datasets: [{
-    label: 'Km recorridos en Semana 30',
-    data: [15, 20], // Datos de los km recorridos en cada día
+    label: 'Km recorridos en Semana 32',
+    data: [19, 30], // Datos de los km recorridos en cada día
     borderColor: 'rgba(153, 102, 255, 1)',
     fill: true,
     tension: 0.1
   }]
+};
+
+// Configuración del gráfico de líneas
+const configLine = {
+  type: 'line',
+  data: dataLine1, // Puede cambiar esto a dataLine2 para mostrar el gráfico de la segunda sección
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
 };
 
 // Seleccione los contextos de los <canvas> y cree los gráficos
