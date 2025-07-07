@@ -12,27 +12,41 @@ body {
   margin: 0 auto;
   padding: 1em; /* Utiliza em en lugar de píxeles */
 }
+.audio-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  margin: 2em auto;
+  padding: 1em;
+  max-width: 600px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.audio-container h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
 
 .main-container {
   background-color:#ffffff;
-  padding-top: 2em;
-  padding-bottom: 0em;
-  padding-left: 3em;
-  padding-right: 4em;
-  margin: -12em; /* Eliminado para evitar márgenes laterales en dispositivos pequeños */
+  padding-top: -14em;
+  padding-bottom: -14em;
+  padding-left: 4em;
+  padding-right: 12em;
+  margin: 6em; /* Eliminado para evitar márgenes laterales en dispositivos pequeños */
   margin-top: 2em;
-  margin-bottom: 0em;
-  margin-left: 0em;
-  margin-inline-start: 3em;
-  margin-inline-end: 6em;
+  margin-bottom: -1em;
+  margin-left: 2em;
+  margin-inline-start: 2em;
   color: black;
   font-size: 1.3em;
   text-align: center;
   justify-content:space-between;
   display: flex;
   font-family: "Tajawal", sans-serif;
+  font-weight: 500;
   font-weight: bold;
-  shape-image-threshold: unset;
 }
 
 .sub-container {
@@ -83,14 +97,6 @@ body {
   padding: 1em; /* Utiliza em en lugar de píxeles */
   text-align: center;
   border: 1px solid #dddddd;
-}
-
-.column1 {
-  flex:auto;
-  text-align:center;
-  font-size: 0.9em;
-  font-family: "Tajawal", sans-serif;
-  font-style: normal;
 }
 
 .small-paragraph-container {
@@ -185,7 +191,7 @@ video {
 }
 
 .sub-container h4 {
-  background-color: #9e22d8;
+  background-color: #4097d1;
   padding: 2em; /* Utiliza em en lugar de píxeles */
   margin: 0; /* Elimina márgenes predeterminados */
   font-family: 'Arial', sans-serif;
@@ -218,7 +224,7 @@ video {
   object-fit: cover; /* Añadido para ajustar el video en el contenedor sin distorsionarse */
 }
 .imagen-chica {
-  width: 80%; /* La imagen tomará todo el ancho disponible */
+  width: 100%; /* La imagen tomará todo el ancho disponible */
   height: auto; /* Mantiene la relación de aspecto */
   display: block; /* Elimina el espacio debajo de la imagen */
   max-width: 100%; /* Asegura que la imagen no exceda el 100% del contenedor */
