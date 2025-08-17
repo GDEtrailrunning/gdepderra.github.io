@@ -223,7 +223,7 @@ video {
 }
 .imagen-chica {
   width: 100%; /* La imagen tomará todo el ancho disponible */
-  height: auto; /* Mantiene la relación de aspecto */
+  height: auto; /* Mantiene la relación de aspectoa */
   display: block; /* Elimina el espacio debajo de la imagen */
   max-width: 100%; /* Asegura que la imagen no exceda el 100% del contenedor */
 }
