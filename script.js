@@ -1,124 +1,107 @@
- document.addEventListener("DOMContentLoaded", function () {
-  //actualizarDiasRestantes();
-  //setInterval(actualizarDiasRestantes, 24*60*60*1000); // Actualizar diario
-   // Datos para el gráfico de líneas
-const dataLine1 = {
-  labels: ['Día 1', 'Día 2'], // Etiquetas de los días
-  datasets: [{
-    label: 'Km recorridos en Semana 45',
-    data: [32, 22], // Datos de los km recorridos en cada día
-    borderColor: 'rgba(75, 192, 192, 1)',
-    fill: true,
-    tension: 0.1
-  }]
-};
+document.addEventListener("DOMContentLoaded", function () {
+  // Ejecutar la actualización de días y programarla diariamente
+  actualizarDiasRestantes();
+  setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // Actualizar cada 24h
 
-const dataLine2 = {
-  labels: ['Día 1', 'Día 2'], // Etiquetas de los días
-  datasets: [{
-    label: 'Km recorridos en Semana 45',
-    data: [20, 30], // Datos de los km recorridos en cada día
-    borderColor: 'rgba(153, 102, 255, 1)',
-    fill: true,
-    tension: 0.1
-  }]
-};
+  // Datos para el gráfico de líneas (se crean solo si existen los canvas en el HTML)
+  const dataLine1 = {
+    labels: ['Día 1', 'Día 2'],
+    datasets: [{
+      label: 'Km recorridos en Semana 47',
+      data: [32, 22],
+      borderColor: 'rgba(75, 192, 192, 1)',
+      fill: true,
+      tension: 0.1
+    }]
+  };
 
-// Configuración del gráfico de líneas
-const configLine = {
-  type: 'line',
-  data: dataLine1, // Puede cambiar esto a dataLine2 para mostrar el gráfico de la segunda sección
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
+  const dataLine2 = {
+    labels: ['Día 1', 'Día 2'],
+    datasets: [{
+      label: 'Km recorridos en Semana 45',
+      data: [20, 30],
+      borderColor: 'rgba(153, 102, 255, 1)',
+      fill: true,
+      tension: 0.1
+    }]
+  };
+
+  // Crear gráficos solo si los elementos canvas existen y Chart está disponible
+  try {
+    if (typeof Chart !== 'undefined') {
+      const c1 = document.getElementById('myChart-line-1');
+      const c2 = document.getElementById('myChart-line-2');
+      if (c1) {
+        new Chart(c1, {
+          type: 'line',
+          data: dataLine1,
+          options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+      }
+      if (c2) {
+        new Chart(c2, {
+          type: 'line',
+          data: dataLine2,
+          options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
       }
     }
+  } catch (err) {
+    // No dejar que errores de los gráficos detengan el resto del script
+    console.warn('No se pudieron crear los gráficos:', err);
   }
-};
 
-// Seleccione los contextos de los <canvas> y cree los gráficos
-const myChartLine1 = new Chart(document.getElementById('myChart-line-1'), {
-  type: 'line',
-  data: dataLine1,
-  options: {
-    responsive: true, // Esto asegura que el gráfico se ajuste a diferentes tamaños de pantalla
-    scales: {
-      y: {
-        beginAtZero: true
+  // Función robusta para actualizar los días restantes
+  function actualizarDiasRestantes() {
+    const pageTitleEl = document.getElementById('pageTitle');
+    const resultElement = document.getElementById('result');
+    if (!pageTitleEl || !resultElement) {
+      console.warn('Elementos #pageTitle o #result no encontrados');
+      return;
+    }
+
+    const titleText = (pageTitleEl.textContent || '').trim();
+
+    // Buscar una fecha en formato YYYY/MM/DD o YYYY-MM-DD dentro del texto
+    const match = titleText.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    let objetivoDate = null;
+
+    if (match) {
+      const year = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const day = parseInt(match[3], 10);
+      objetivoDate = new Date(year, month - 1, day);
+    } else {
+      // Intentar extraer después de dos puntos ":"
+      const parts = titleText.split(':');
+      if (parts.length > 1) {
+        const possible = parts.slice(1).join(':').trim();
+        // Reemplazar barras por guiones para un parseo más consistente
+        objetivoDate = new Date(possible.replace(/\//g, '-'));
       }
     }
-  }
-});
-const myChartLine2 = new Chart(document.getElementById('myChart-line-2'), {
-  type: 'line',
-  data: dataLine2,
-  options: {
-    responsive: true, // Esto asegura que el gráfico se ajuste a diferentes tamaños de pantalla
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+
+    if (!objetivoDate || isNaN(objetivoDate.getTime())) {
+      resultElement.textContent = 'No se pudo determinar la fecha de la carrera.';
+      console.warn('Fecha objetivo inválida:', titleText);
+      return;
     }
-  }
-});
 
-function actualizarDiasRestantes() {
-  // Obtener el título que contiene la fecha objetivo
-  const pageTitle =  document.getElementById('pageTitle').innerText;
-    
-  // Extraer la fecha de la cadena del título
-  const objetivoDate = new Date(pageTitle.split(": ")[1]);
+    const ahora = new Date();
+    // Calcular diferencia en días (redondeando hacia arriba)
+    const msPorDia = 1000 * 60 * 60 * 24;
+    const diffMs = objetivoDate.setHours(0,0,0,0) - ahora.setHours(0,0,0,0);
+    const dias = Math.ceil(diffMs / msPorDia);
 
-  // Obtener la fecha actual
-  const currentDate = new Date();
-
-  // Calcular la diferencia en milisegundos entre las dos fechas
-  const timeDiff = objetivoDate - currentDate;
-
-  // Calcular la cantidad de días
-  const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-  // Mostrar el resultado
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = `Faltan ${daysDiff} días para llegar a la carrera.`;
-  console.log("actualizarDiasRestantes function called");
+    if (diffMs < 0) {
+      resultElement.textContent = `La carrera ya pasó hace ${Math.abs(dias)} día(s).`;
+    } else {
+      resultElement.textContent = `Faltan ${dias} día(s) para la carrera.`;
+    }
+    console.log('actualizarDiasRestantes:', dias);
   }
 
-  // Crear dos nuevas instancias de HTMLVideoElement para cada sección
-  let Semana_1_video_1 = document.createElement("video");
-  let Semana_1_video_2 = document.createElement("video");
-  let Semana_2_video_3 = document.createElement("video");
-  let Semana_2_video_4 = document.createElement("video");
-
-  // Establecer las fuentes de video
-  Semana_1_video_1.src = "video 1.mp4"; // ruta de su primer video
-  Semana_1_video_2.src = "video 2.mp4"; // ruta de su segundo video
-  Semana_2_video_3.src = "video 3.mp4"; // ruta de su tercer video
-  Semana_2_video_4.src = "video 4.mp4"; // ruta de su cuarto video
-
-  // Establecer atributos de video
-  Semana_1_video_1.controls = true;
-  Semana_1_video_1.autoplay = false;
-  Semana_1_video_1.loop = false;
-
-  Semana_1_video_2.controls = true;
-  Semana_1_video_2.autoplay = false;
-  Semana_1_video_2.loop = false;
-
-  Semana_2_video_3.controls = true;
-  Semana_2_video_3.autoplay = false;
-  Semana_2_video_3.loop = false;
-
-  Semana_2_video_4.controls = true;
-  Semana_2_video_4.autoplay = false;
-  Semana_2_video_4.loop = false;
-
-  // Agregar los dos videos a cada sección
-  document.getElementById("Semana 1").appendChild(video1);
-  document.getElementById("Semana 1").appendChild(video2);
-  document.getElementById("Semana 2").appendChild(video3);
-  document.getElementById("Semana 2").appendChild(video4);
-
+  // NOTA: El HTML ya incluye videos en la mayoría de secciones. Evitamos crear/adjuntar
+  // videos por JS a menos que existan contenedores con id específicos para no generar errores.
 });
 
