@@ -1,3 +1,27 @@
+/* Cuenta regresiva llamativa */
+.countdown-llamativo {
+  text-align: center;
+  margin: 2em;
+  padding: 2em;
+  background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.cuenta-regresiva-titulo {
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 6px #333;
+}
+.cuenta-regresiva-numero {
+  font-size: 2.2em;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 2px 2px 8px #333;
+  display: block;
+  margin-top: 10px;
+}
 /* styles.css */
 
 body {
@@ -8,10 +32,43 @@ body {
 }
 
 .container {
-  max-width: 90%; /* Utiliza porcentaje en lugar de píxeles */
+  max-width: 90%;
   margin: 0 auto;
-  padding: 1em; /* Utiliza em en lugar de píxeles */
+  padding: 1em;
 }
+
+/* --- H1 con imagen de fondo --- */
+.sub-container h1 {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 2em;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.2em;
+  text-align: center;
+  border-radius: 0;
+  position: relative;
+  min-height: 160px; /* Altura mínima para asegurar buen fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* Fondo semitransparente detrás del texto del h1 para mejor visibilidad */
+.sub-container h1 span {
+  background: rgba(0,0,0,0.4);
+  padding: 0.4em 1em;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  display: inline-block;
+}
+
+/* --- Resto de tu CSS --- */
+
 .audio-container {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
@@ -27,13 +84,14 @@ body {
   color: #333;
   margin-bottom: 0.5em;
 }
+
 .main-container {
   background-color:#ffffff;
   padding-top: -14em;
   padding-bottom: -14em;
   padding-left: 4em;
   padding-right: 12em;
-  margin: 6em; /* Eliminado para evitar márgenes laterales en dispositivos pequeños */
+  margin: 6em;
   margin-top: 2em;
   margin-bottom: -1em;
   margin-left: 2em;
@@ -50,34 +108,14 @@ body {
 
 .sub-container {
   background-color: #ffffff;
-  padding: 2em; /* Utiliza em en lugar de píxeles */
-  margin: 1em 0; /* Utiliza em en lugar de píxeles */
-}
-
-.sub-container h1 {
-  background-color: #b0afaf;
   padding: 2em;
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  font-size: 2.2em;
-  text-align: center;
-}
-
-.h1 {
-  color: #ffffff;
-  font-size: 1.2em;
-  margin: 0; /* Eliminado para evitar márgenes predeterminados */
-  font-weight: bold;
-  text-align: center;
-  display: flex;
-  font-family: "Tajawal", sans-serif;
-  font-weight: 500;
+  margin: 1em 0;
 }
 
 .sub-container h2 {
   color: #333333;
   font-size: 1.0em;
-  margin: 5em; /* Eliminado para evitar márgenes predeterminados */
+  margin: 5em;
   font-weight: bold;
 }
 
@@ -92,14 +130,14 @@ body {
 
 .column {
   flex: 1;
-  padding: 1em; /* Utiliza em en lugar de píxeles */
+  padding: 1em;
   text-align: center;
   border: 1px solid #dddddd;
 }
 
 .small-paragraph-container {
   background-color: #f4f4f4;
-  padding: 2em; /* Utiliza em en lugar de píxeles */
+  padding: 2em;
 }
 h2 {
     display: flex;
@@ -156,8 +194,6 @@ h2 {
   font-style: normal;
 }
 
-
-
 video {
   width: 100%;
   height: auto;
@@ -184,17 +220,48 @@ video {
   .main-container,
   .sub-container,
   .column {
-    margin: 0; /* Elimina márgenes laterales en dispositivos pequeños */
+    margin: 0;
+  }
+  .sub-container h1 {
+    font-size: 1.2em;
+    padding: 1.2em;
+    min-height: 80px;
+  }
+  .sub-container h1 span {
+    padding: 0.2em 0.5em;
+    font-size: 1em;
+  }
+  .sub-container {
+    padding: 1em;
   }
 }
 
 .sub-container h4 {
-  background-color: #1270af;
-  padding: 2em; /* Utiliza em en lugar de píxeles */
-  margin: 0; /* Elimina márgenes predeterminados */
-  font-family: 'Arial', sans-serif;
-  font-size: 1.2em;
-  text-align: center;
+  position: relative;
+  color: #222;
+  padding: 24px 24px 40px 24px;
+  border-radius: 10px;
+  min-height: 120px;
+  box-sizing: border-box;
+  text-shadow: 1px 1px 8px rgba(255,255,255,0.7);
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #444; /* Borde gris oscuro */
+}
+
+.sub-container h4::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  width: 160px;   /* Aumenta el ancho de la imagen */
+  height: 120px;  /* Aumenta el alto de la imagen */
+  background: url('2.jpg') no-repeat right bottom;
+  background-size: contain;
+  opacity: 0.9;
+  pointer-events: none;
+  border-radius: 8px;
+  z-index: 1;
 }
 
 .image-container {
@@ -213,41 +280,22 @@ video {
 .image-container video {
   max-width: 100%;
   height: auto;
-  display: grid; /* Asegura que el video se centre correctamente */
+  display: grid;
   grid-template-columns: 
       repeat(auto-fit, minmax(150px, 1fr)
       );
       gap:32px;
-  margin: 0 auto; /* Centra el video horizontalmente */
-  object-fit: cover; /* Añadido para ajustar el video en el contenedor sin distorsionarse */
+  margin: 0 auto;
+  object-fit: cover;
 }
 .imagen-chica {
-  width: 100%; /* La imagen tomará todo el ancho disponible */
-  height: auto; /* Mantiene la relación de aspectoa */
-  display: block; /* Elimina el espacio debajo de la imagen */
-  max-width: 100%; /* Asegura que la imagen no exceda el 100% del contenedor */
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
 }
 @media (max-width: 600px) {
   .imagen-chica {
-    width: 100%; /* En pantallas pequeñas, la imagen ocupará todo el ancho */
-  }
-}
-
-@media (max-width: 600px) {
-  /* Ajustar márgenes y tamaños de fuentes en pantallas pequeñas */
-  .main-container {
-    padding: 1em; /* Reducir el padding en pantallas pequeñas */
-  }
-
-  h1, h2, h3 {
-    font-size: 1.2em; /* Ajustar el tamaño de fuente */
-  }
-
-  .column {
-    flex: 100%; /* En pantallas pequeñas, las columnas se apilan */
-  }
-
-  .sub-container {
-    padding: 1em; /* Reducir el padding en pantallas pequeñas */
+    width: 100%;
   }
 }
