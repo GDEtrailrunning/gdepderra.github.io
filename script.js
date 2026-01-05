@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Datos para el gráfico de líneas (se crean solo si existen los canvas en el HTML)
   const dataLine1 = {
-    labels: ['Día 1', 'Día 2'],
+    labels: ['Día 1', 'Día 2', 'Día 3'],
     datasets: [{
-      label: 'Km recorridos en Semana 55',
-      data: [18, 17],
+      label: 'Km recorridos en Semana 1',
+      data: [11, 13, 16],
       borderColor: 'rgba(75, 192, 192, 1)',
       fill: true,
       tension: 0.1
@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const dataLine2 = {
-    labels: ['Día 1', 'Día 2'],
+    labels: ['Día 1', 'Día 2', 'Día 3'],
     datasets: [{
-      label: 'Km recorridos en Semana 56',
-      data: [16, 22],
+      label: 'Km recorridos en Semana 2',
+      data: [9, 11, 12],
       borderColor: 'rgba(153, 102, 255, 1)',
       fill: true,
       tension: 0.1
