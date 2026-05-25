@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Ejecutar la actualización de días y programarla diariamente
-  //actualizarDiasRestantes();
-  //setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // Actualizar cada 24h
+  actualizarDiasRestantes();
+  setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // Actualizar cada 24h
 
   // Datos para el gráfico de líneas (se crean solo si existen los canvas en el HTML)
   const dataLine1 = {
