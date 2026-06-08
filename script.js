@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Ejecutar la actualización de días y programarla diariamente
-  actualizarDiasRestantes();
-  setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // Actualizar cada 24h
+  //actualizarDiasRestantes();
+  //setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // Actualizar cada 24h
 
   // Datos para el gráfico de líneas (se crean solo si existen los canvas en el HTML)
   const dataLine1 = {
     labels: ['Día 1', 'Día 2', 'Día 3'],
     datasets: [{
-      label: 'Km recorridos en Semana 19',
+      label: 'Km recorridos en Semana 23',
       data: [11, 13, 16],
       borderColor: 'rgba(75, 192, 192, 1)',
       fill: true,
